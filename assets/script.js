@@ -1,20 +1,15 @@
-
 /* Const arrows */
 
 const leftArrow = document.querySelector('.arrow_left')
 const rightArrow = document.querySelector('.arrow_right')
 
-/* EventListener */
-
-leftArrow.addEventListener('click', function () { console.log("left") })
-rightArrow.addEventListener('click', function () { console.log("right") })
-
 /* Const dots */
 
-const dots = document.getElementsByClassName(".dot");
+const dots = document.querySelectorAll(".dot");
 
 /* Const slides */
 
+const bannerSlide = document.getElementById("banner-slide");
 const slides = [
 	{
 		"image": "slide1.jpg",
@@ -33,31 +28,42 @@ const slides = [
 		"tagLine": "Autocollants <span>avec découpe laser sur mesure</span>"
 	}
 ]
-
-
-const bannerSlide = document.getElementById("banner-slide");
 let currentSlide = 0; /* The currentSlide variable is used to track the current slide index. */
-const slideTagLine = document.querySelector("#banner > p");
-
+updateActiveDot() /* Selects the first bullet point when we arrives on the page */
 
 
 /* Functions */
+
+/* To update active dot */
+function updateActiveDot() {
+	dots.forEach((dot, index) => {
+		dot.classList.remove("dot_selected");
+		if (index === currentSlide) {
+			dot.classList.add("dot_selected");
+		}
+	});
+}
+/* forEach go through each bullet point and remove the "dot_selected" class
+"dot_selected" class only to the bullet point corresponding to the current slide/*
+
 
 /* To show next slide */
 function showNextSlide() {
 	currentSlide = (currentSlide + 1) % slides.length;
 	bannerSlide.src = "./assets/images/slideshow/" + slides[currentSlide].image;
+	updateActiveDot();
+
 }
 
 /* To show the previous slide */
-
 function showPreviousSlide() {
 	currentSlide = (currentSlide - 1 + slides.length) % slides.length;
 	bannerSlide.src = "../assets/images/slideshow/" + slides[currentSlide].image;
+	updateActiveDot();
 
 }
 
-/* EventListener */
+/* EventListener on arrows */
 
 leftArrow.addEventListener('click', showPreviousSlide)
 rightArrow.addEventListener('click', showNextSlide)
