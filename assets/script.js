@@ -41,7 +41,7 @@ function updateActiveDot() {
 
 
 function showNextSlide() {
-	currentSlide = (currentSlide + 1) % slides.length;
+	currentSlide = (currentSlide + 1) % slides.length; //"%" is used to manage the carousel loop
 	bannerSlide.src = "./assets/images/slideshow/" + slides[currentSlide].image;
 	bannerText.innerHTML = slides[currentSlide].tagLine;
 	updateActiveDot();
