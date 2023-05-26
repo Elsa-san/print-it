@@ -35,11 +35,29 @@ const slides = [
 ]
 
 
-const showSlide = document.getElementById("banner-slide")
-let slideIndex = 0 /* Index = 0 */
+const bannerSlide = document.getElementById("banner-slide");
+let currentSlide = 0; /* The currentSlide variable is used to track the current slide index. */
 const slideTagLine = document.querySelector("#banner > p");
 
 
 
 /* Functions */
 
+/* To show next slide */
+function showNextSlide() {
+	currentSlide = (currentSlide + 1) % slides.length;
+	bannerSlide.src = "./assets/images/slideshow/" + slides[currentSlide].image;
+}
+
+/* To show the previous slide */
+
+function showPreviousSlide() {
+	currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+	bannerSlide.src = "./chemin/vers/" + slides[currentSlide].image;
+
+}
+
+/* EventListener */
+
+leftArrow.addEventListener('click', showPreviousSlide)
+rightArrow.addEventListener('click', showNextSlide)
