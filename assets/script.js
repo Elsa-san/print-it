@@ -1,14 +1,8 @@
-/* Const arrows */
 
 const leftArrow = document.querySelector('.arrow_left')
 const rightArrow = document.querySelector('.arrow_right')
-
-/* Const dots */
-
 const dots = document.querySelectorAll(".dot");
-
-/* Const slides */
-
+const bannerText = banner.querySelector("p");
 const bannerSlide = document.getElementById("banner-slide");
 const slides = [
 	{
@@ -28,8 +22,8 @@ const slides = [
 		"tagLine": "Autocollants <span>avec découpe laser sur mesure</span>"
 	}
 ]
-let currentSlide = 0; /* The currentSlide variable is used to track the current slide index. */
-updateActiveDot() /* Selects the first bullet point when we arrives on the page */
+let currentSlide = 0; // The currentSlide variable is used to track the current slide index
+updateActiveDot() // Selects the first bullet point when we arrives on the page
 
 
 /* Functions */
@@ -44,13 +38,14 @@ function updateActiveDot() {
 	});
 }
 /* forEach go through each bullet point and remove the "dot_selected" class
-"dot_selected" class only to the bullet point corresponding to the current slide/*
+"dot_selected" class only to the bullet point corresponding to the current slide */
 
 
 /* To show next slide */
 function showNextSlide() {
 	currentSlide = (currentSlide + 1) % slides.length;
 	bannerSlide.src = "./assets/images/slideshow/" + slides[currentSlide].image;
+	bannerText.innerHTML = slides[currentSlide].tagLine;
 	updateActiveDot();
 
 }
@@ -59,8 +54,8 @@ function showNextSlide() {
 function showPreviousSlide() {
 	currentSlide = (currentSlide - 1 + slides.length) % slides.length;
 	bannerSlide.src = "./assets/images/slideshow/" + slides[currentSlide].image;
+	bannerText.innerHTML = slides[currentSlide].tagLine;
 	updateActiveDot();
-
 }
 
 /* EventListener on arrows */
