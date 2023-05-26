@@ -53,7 +53,7 @@ function showNextSlide() {
 
 function showPreviousSlide() {
 	currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-	bannerSlide.src = "./chemin/vers/" + slides[currentSlide].image;
+	bannerSlide.src = "../assets/images/slideshow/" + slides[currentSlide].image;
 
 }
 
