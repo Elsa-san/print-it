@@ -58,7 +58,7 @@ function showNextSlide() {
 /* To show the previous slide */
 function showPreviousSlide() {
 	currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-	bannerSlide.src = "../assets/images/slideshow/" + slides[currentSlide].image;
+	bannerSlide.src = "./assets/images/slideshow/" + slides[currentSlide].image;
 	updateActiveDot();
 
 }
